@@ -1,0 +1,40 @@
+{{#each product}}
+<div class="card card-body mb-2">
+    <h2>Product: {{name}}</h2>
+
+  <form method = "POST" action="/products/{{_id}}?_method=PUT">
+    <input type="hidden" name="_method" value="PUT">
+    <div class="form-group">
+      <label for="title">Product</label>
+      <input type="text" class="form-control" name="name" value="{{name}}">
+    </div>
+    <div class="form-group">
+      <label for="details">Price</label>
+      <input type = "text" class="form-control" name="price" value="{{price}}" required>
+    </div>
+
+    <div class="form-group">
+      <label for="details">Manufacturer</label>
+      <input type = "text" class="form-control" name="manufacturer" value="{{manufacturer}}">
+    </div>
+
+    <div class="form-group">
+      <label for="details">Product code</label>
+      <input type = "text" class="form-control" name="code" value="{{code}}" required>
+    </div>
+    <!--<button type="submit" class="btn btn-primary">Submit Changes</button>-->
+    <input type="submit" class="btn btn-primary btn-block" value = "submit changes">
+       <br>
+
+    </form>
+     <form method="POST" action="/products/{{_id}}?_method=DELETE">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" class="btn btn-danger btn-block" value="Delete"> 
+    </form>
+    
+    </div>
+
+{{else}}
+<p>{{message}}</p>
+{{/each}}
+

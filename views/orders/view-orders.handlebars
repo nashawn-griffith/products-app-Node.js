@@ -1,0 +1,16 @@
+{{#each order}}
+  <div class="card card-body mb-2">
+    <p>Product: {{product.name}}</p>
+    <p>Price: {{product.price}}</p>
+    <p>Quantity: {{quantity}}</p>
+    <p>Date Ordered: {{date}}</p>
+
+    <form method = "POST" action = "/orders/{{_id}}?_method=DELETE">
+     <input type = "hidden" name ="_method" value = "DELETE">
+     <input type="submit" class="btn btn-danger" value="Remove Order">
+    </form>
+    
+  </div>
+  {{else}}
+   <h4>{{empty}}</h4>
+{{/each}}

@@ -1,0 +1,16 @@
+{{#each product}}
+ <div class="card card-body mb-2">
+ <div class = "jumbotron">
+    <p>Product: {{name}}</p>
+    <p>Price: {{price}}</p>
+     
+    <p>
+    <a class="btn btn-info" href="/products/item/{{id}}">View</a> 
+    <a class="btn btn-dark" href="/orders/order/{{id}}">Order</a>
+    </p>
+    
+  </div>
+   </div>
+  {{else}}
+   <h4>{{empty}}</h4>
+{{/each}}
