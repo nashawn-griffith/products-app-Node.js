@@ -9,6 +9,7 @@ const exphbs = require('express-handlebars');
 const products = require('./routes/products/products_routes');
 const orders = require('./routes/orders/orders_routes');
 const index = require('./routes/index');
+const path = require('path');
 
 
 //create express app
@@ -22,6 +23,7 @@ const port = process.env.PORT || 5000;
 mongoose.connect(db.mongoURI, {useNewUrlParser:true})
 .then(console.log('Database running'))
 .catch((error) => console.log(error));
+
 
 /*middleware*/
 app.use(morgan('dev'));
@@ -43,6 +45,9 @@ app.use(flash());
 //handlebars
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
+
+//static files
+app.use(express.static(path.join(__dirname, 'public')));
 
 //bodyparser
 app.use(express.json());
